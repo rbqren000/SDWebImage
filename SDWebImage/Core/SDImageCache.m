@@ -261,7 +261,10 @@ static NSString * _defaultDiskCacheDirectory;
         return;
     }
     NSData *data = imageData;
-    if (!data && [image respondsToSelector:@selector(animatedImageData)]) {
+    if (image.sd_isThumbnail && SDIsThumbnailKey(key)) {
+        // Currently we have no solid way to store thumbnail image's correct data
+        data = nil;
+    } else if (!data && [image respondsToSelector:@selector(animatedImageData)]) {
         // If image is custom animated image class, prefer its original animated data
         data = [((id<SDAnimatedImage>)image) animatedImageData];
     }
