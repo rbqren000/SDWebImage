@@ -324,6 +324,12 @@ static id<SDImageLoader> _defaultImageLoader;
                     [self callOriginalCacheProcessForOperation:operation url:url options:options context:context progress:progressBlock completed:completedBlock];
                     return;
                 }
+            } else {
+                // Write back the disk image into memory cache, with the correct key
+                if (cacheType == SDImageCacheTypeDisk) {
+                    // Sync
+                    [imageCache storeImage:cachedImage imageData:nil forKey:key cacheType:SDImageCacheTypeMemory completion:nil];
+                }
             }
             // Continue download process
             [self callDownloadProcessForOperation:operation url:url options:options context:context cachedImage:cachedImage cachedData:cachedData cacheType:cacheType progress:progressBlock completed:completedBlock];
@@ -376,6 +382,12 @@ static id<SDImageLoader> _defaultImageLoader;
                 // Original image cache miss. Continue download process
                 [self callDownloadProcessForOperation:operation url:url options:options context:context cachedImage:nil cachedData:nil cacheType:SDImageCacheTypeNone progress:progressBlock completed:completedBlock];
                 return;
+            } else {
+                // Write back the disk image into memory cache, with the correct key
+                if (cacheType == SDImageCacheTypeDisk) {
+                    // Sync
+                    [imageCache storeImage:cachedImage imageData:nil forKey:key cacheType:SDImageCacheTypeMemory completion:nil];
+                }
             }
                         
             // Skip downloading and continue transform process, and ignore .refreshCached option for now

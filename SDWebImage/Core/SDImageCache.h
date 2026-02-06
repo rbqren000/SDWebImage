@@ -312,6 +312,7 @@ typedef NS_OPTIONS(NSUInteger, SDImageCacheOptions) {
  * @param doneBlock The completion block. Will not get called if the operation is cancelled
  *
  * @return a SDImageCacheToken instance containing the cache operation, will callback immediately when cancelled
+ * @note In history, when disk cache hit, the image will write back into memory cache, which is mostly unwanted behavior. From new version this behavior is removed.
  */
 - (nullable SDImageCacheToken *)queryCacheOperationForKey:(nullable NSString *)key done:(nullable SDImageCacheQueryCompletionBlock)doneBlock;
 
@@ -324,6 +325,7 @@ typedef NS_OPTIONS(NSUInteger, SDImageCacheOptions) {
  *
  * @return a SDImageCacheToken instance containing the cache operation, will callback immediately when cancelled
  * @warning If you query with thumbnail cache key, you'd better not pass the thumbnail pixel size context, which is undefined behavior.
+ * @note In history, when disk cache hit, the image will write back into memory cache, which is mostly unwanted behavior. From new version this behavior is removed.
  */
 - (nullable SDImageCacheToken *)queryCacheOperationForKey:(nullable NSString *)key options:(SDImageCacheOptions)options done:(nullable SDImageCacheQueryCompletionBlock)doneBlock;
 
@@ -337,6 +339,7 @@ typedef NS_OPTIONS(NSUInteger, SDImageCacheOptions) {
  *
  * @return a SDImageCacheToken instance containing the cache operation, will callback immediately when cancellederation, will callback immediately when cancelled
  * @warning If you query with thumbnail cache key, you'd better not pass the thumbnail pixel size context, which is undefined behavior.
+ * @note In history, when disk cache hit, the image will write back into memory cache, which is mostly unwanted behavior. From new version this behavior is removed.
  */
 - (nullable SDImageCacheToken *)queryCacheOperationForKey:(nullable NSString *)key options:(SDImageCacheOptions)options context:(nullable SDWebImageContext *)context done:(nullable SDImageCacheQueryCompletionBlock)doneBlock;
 
@@ -351,6 +354,7 @@ typedef NS_OPTIONS(NSUInteger, SDImageCacheOptions) {
  *
  * @return a SDImageCacheToken instance containing the cache operation, will callback immediately when cancelled
  * @warning If you query with thumbnail cache key, you'd better not pass the thumbnail pixel size context, which is undefined behavior.
+ * @note In history, when disk cache hit, the image will write back into memory cache, which is mostly unwanted behavior. From new version this behavior is removed.
  */
 - (nullable SDImageCacheToken *)queryCacheOperationForKey:(nullable NSString *)key options:(SDImageCacheOptions)options context:(nullable SDWebImageContext *)context cacheType:(SDImageCacheType)queryCacheType done:(nullable SDImageCacheQueryCompletionBlock)doneBlock;
 
