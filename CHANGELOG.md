@@ -1,3 +1,9 @@
+## [5.21.7 - 5.21 Patch on Feb 26th 2026]
+See [all tickets marked for the 5.21.7 release](https://github.com/SDWebImage/SDWebImage/milestone/149)
+
+### Fixes
+- Fix AppKit SDImageCoderHelper does not use APNG instead of GIF for animated image creation #3870 #3871 @ijunfly
+
 ## [5.21.6 - 5.21 Patch on Feb 6th 2026]
 See [all tickets marked for the 5.21.6 release](https://github.com/SDWebImage/SDWebImage/milestone/148)
 
